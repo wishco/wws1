@@ -18,7 +18,7 @@ const initialState = {
   gettingStatusTrafficCurrent: true,  // статус получения данных, трафика
   dataTrafficWSS: [], // данные через WSS
   dataTrafficDateTime: [], // временные данные, при получении трафика
-  dataStationList: ['total'], // список графов станций
+  dataStationList: [], // список графов станций
   dataStationsCharts: ['total'], // список активных трендов станций
   signalValue: 100, // уровень превышения, по которому срабатывает сигнал
   dataTrafficSignalList: [],
@@ -70,7 +70,7 @@ export const trafficReducer = (state = initialState, action) => {
 
     case GET_DATA_STATION_LIST: {
       const arrWithoutTotal = action.stations.filter(el=>el!=='total')
-      return {...state, dataStationList: [...state.dataStationList , ...arrWithoutTotal]}
+      return {...state, dataStationList: ['total' , ...arrWithoutTotal]}
     }
 
     case SHOW_STATION_INTO_CHART: {
